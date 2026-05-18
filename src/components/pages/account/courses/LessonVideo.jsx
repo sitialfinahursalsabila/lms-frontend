@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from 'react'; // ✅ tambah useEffect
+import React, { useState, useEffect } from 'react';
 import { FilePond, registerPlugin } from 'react-filepond';
 import { toast } from 'react-hot-toast';
 import { apiUrl, token } from '../../../common/Config';
 import 'filepond/dist/filepond.min.css';
-import ReactPlayer from 'react-player';
 import FilePondPluginFileValidateType from 'filepond-plugin-file-validate-type';
 
 registerPlugin(FilePondPluginFileValidateType);
@@ -13,8 +12,8 @@ const LessonVideo = ({ lesson }) => {
     const [videoUrl, setVideoUrl] = useState();
 
     useEffect(() => {
-        if (lesson) {
-            setVideoUrl(lesson.video_url) // ✅ set video saat lesson load
+        if (lesson?.video_url) {
+            setVideoUrl(lesson.video_url);
         }
     }, [lesson]);
 
@@ -38,14 +37,14 @@ const LessonVideo = ({ lesson }) => {
                                 url: `${apiUrl}/save-lesson-video/${lesson?.id}`,
                                 method: 'POST',
                                 headers: {
-                                    'Authorization': `Bearer ${token}`,
+                                    'Authorization': `Bearer ${token()}`,
                                     'Accept': 'application/json',
                                 },
                                 onload: (response) => {
                                     response = JSON.parse(response);
                                     toast.success(response.message);
-                                    setVideoUrl(response.data.video)
-                                    setFiles([]);
+                                    setVideoUrl(response.data.video);
+                                    setTimeout(() => setFiles([]), 100);
                                 },
                                 onerror: (errors) => {
                                     console.log(errors);
@@ -56,13 +55,31 @@ const LessonVideo = ({ lesson }) => {
                         name="video"
                         labelIdle='Drag & Drop your video or <span class="filepond--label-action">Browse</span>'
                     />
-                    {videoUrl &&
-                        <ReactPlayer
-                            width="100%"
-                            height="100%"
-                            controls
-                            url={videoUrl} />
-                    }
+
+                    {videoUrl && (
+                        <div className='video-container mb-3' style={{
+                            position: 'relative',
+                            width: '100%',
+                            backgroundColor: '#000',
+                            borderRadius: '12px',
+                            overflow: 'hidden',
+                            aspectRatio: '16/9',
+                            marginTop: '16px'
+                        }}>
+                            <video
+                                key={videoUrl}
+                                src={videoUrl}
+                                controls
+                                width="100%"
+                                height="100%"
+                                controlsList="nodownload"
+                                onContextMenu={e => e.preventDefault()}
+                                style={{ objectFit: 'contain' }}
+                            >
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                    )}
                 </div>
             </div>
         </>

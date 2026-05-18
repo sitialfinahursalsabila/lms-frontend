@@ -35,7 +35,7 @@ const EditCover = ({ course, setCourse }) => {
                                 url: `${apiUrl}/courses/save-course-image/${course.id}`,
                                 method: 'POST',
                                 headers: {
-                                    'Authorization': `Bearer ${token}`,
+                                    'Authorization': `Bearer ${token()}`,
                                     'Accept': 'application/json',
                                 },
                                 onload: (response) => {

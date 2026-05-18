@@ -14,6 +14,8 @@ import RequiredAuth from './components/common/RequiredAuth'
 import CreateCourse from './components/pages/account/courses/CreateCourse'
 import EditCourse from './components/pages/account/courses/EditCourse'
 import EditLesson from './components/pages/account/courses/EditLesson'
+import LeaveRating from './components/pages/account/courses/LeaveRating'
+import Profile from './components/pages/account/courses/profile'
 
 const App = () => {
   return (
@@ -21,31 +23,45 @@ const App = () => {
       <BrowserRouter>
         <Routes>
           {/* Public routes */}
-          <Route path="/" element={<Home />} />
-          <Route path="/courses" element={<Courses />} />
-          <Route path="/detail" element={<Detail />} />
-          <Route path="/account/login" element={<Login />} />
-          <Route path="/account/register" element={<Register />} />
+          <Route path='/' element={<Home />} />
+          <Route path='/courses' element={<Courses />} />
+          <Route path='/detail/:id' element={<Detail />} />
+          <Route path='/account/login' element={<Login />} />
+          <Route path='/account/register' element={<Register />} />
 
           {/* Protected routes */}
           <Route path="/account/dashboard" element={
             <RequiredAuth><Dashboard /></RequiredAuth>
           } />
-          <Route path="/account/my-learning" element={
-            <RequiredAuth><MyLearning /></RequiredAuth>
+
+          <Route path="/account/profile" element={
+            <RequiredAuth><Profile /></RequiredAuth>
           } />
-          <Route path="/account/my-courses" element={      // fix: lowercase
-            <RequiredAuth><MyCourses /></RequiredAuth>
-          } />
-          <Route path="/account/watch-course" element={
-            <RequiredAuth><WatchCourse /></RequiredAuth>
-          } />
+
           <Route path="/account/change-password" element={
             <RequiredAuth><ChangePassword /></RequiredAuth>
           } />
+
+          <Route path="/account/my-learning" element={
+            <RequiredAuth><MyLearning /></RequiredAuth>
+          } />
+
+          <Route path="/account/my-courses" element={
+            <RequiredAuth><MyCourses /></RequiredAuth>
+          } />
+
+          <Route path="/account/watch-course/:id" element={
+            <RequiredAuth><WatchCourse /></RequiredAuth>
+          } />
+
+          <Route path="/account/leave-rating/:id" element={
+            <RequiredAuth><LeaveRating /></RequiredAuth>
+          } />
+
           <Route path="/account/courses/create" element={
             <RequiredAuth><CreateCourse /></RequiredAuth>
           } />
+
           <Route path="/account/courses/edit/:id" element={
             <RequiredAuth><EditCourse /></RequiredAuth>
           } />

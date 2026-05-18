@@ -15,7 +15,7 @@ const CreateLesson = ({ showLessonModal, handleCloseLessonModal, course, chapter
             headers: {
                 "Content-Type": "application/json",
                 "Accept": "application/json",
-                "Authorization": `Bearer ${token}`
+                "Authorization": `Bearer ${token()}`
             },
             body: JSON.stringify(data)
         })
@@ -48,17 +48,21 @@ const CreateLesson = ({ showLessonModal, handleCloseLessonModal, course, chapter
                         <div className='mb-3'>
                             <label className='form-label'>Chapter</label>
                             <select
-                                {...register('chapter', {
-                                    required: "please select a chapter."
-                                })}
-                                className={`form-select ${errors.chapter_id && 'is-invalid'}`}
+                                {
+                                ...register('chapter', {
+                                    required: "Please select a Chapter."
+                                })
+                                }
+                                className={`form-select ${errors.chapter && 'is-invalid'}`}
                             >
                                 <option value="">Select a Chapter</option>
-                                {chapters && chapters.map(chapter => (
-                                    <option key={chapter.id} value={chapter.id}>
-                                        {chapter.title}
-                                    </option>
-                                ))}
+                                {
+                                    chapters && chapters.map(chapter => {
+                                        return (
+                                            <option value={chapter.id}>{chapter.title}</option>
+                                        )
+                                    })
+                                }
                             </select>
                             {errors.chapter && <p className='invalid-feedback'>{errors.chapter.message}</p>}
                         </div>

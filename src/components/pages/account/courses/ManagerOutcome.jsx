@@ -44,7 +44,7 @@ const ManagerOutcome = () => {
             headers: {
                 "Content-Type": "application/json",
                 "Accept": "application/json",
-                "Authorization": `Bearer ${token}`
+                "Authorization": `Bearer ${token()}`
             },
             body: JSON.stringify({ outcomes: updatedOutcomes })
         })
@@ -67,7 +67,7 @@ const ManagerOutcome = () => {
             headers: {
                 "Content-Type": "application/json",
                 "Accept": "application/json",
-                "Authorization": `Bearer ${token}`
+                "Authorization": `Bearer ${token()}`
             },
             body: JSON.stringify(formData)
         })
@@ -91,7 +91,7 @@ const ManagerOutcome = () => {
             headers: {
                 "Content-Type": "application/json",
                 "Accept": "application/json",
-                "Authorization": `Bearer ${token}`
+                "Authorization": `Bearer ${token()}`
             },
         })
             .then(res => res.json())
@@ -112,7 +112,7 @@ const ManagerOutcome = () => {
                 headers: {
                     "Content-Type": "application/json",
                     "Accept": "application/json",
-                    "Authorization": `Bearer ${token}`
+                    "Authorization": `Bearer ${token()}`
                 }
             })
                 .then(res => res.json())

@@ -84,7 +84,7 @@ const Login = () => {
 
                                     <div className='d-flex justify-content-between align-items-center'>
                                         <button className='btn btn-primary'>Login</button>
-                                        <Link to={`/register`} className='text-secondary'>Register Here</Link>
+                                        <Link to={`/account/register`} className='text-secondary'>Register Here</Link>
                                     </div>
                                 </div>
                             </div>

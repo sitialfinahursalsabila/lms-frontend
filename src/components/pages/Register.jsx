@@ -13,7 +13,7 @@ const Register = () => {
     } = useForm()
 
     const onSubmit = async (data) => {
-        await fetch(`${apiUrl} / register`, {
+        await fetch(`${apiUrl}/register`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

@@ -22,7 +22,7 @@ const EditCourse = () => {
                 headers: {
                     "Content-Type": "application/json",
                     "Accept": "application/json",
-                    "Authorization": `Bearer ${token}`
+                    "Authorization": `Bearer ${token()}`
                 }
             })
                 .then(res => res.json())
@@ -56,7 +56,7 @@ const EditCourse = () => {
             headers: {
                 "Content-Type": "application/json",
                 "Accept": "application/json",
-                "Authorization": `Bearer ${token}`
+                "Authorization": `Bearer ${token()}`
             },
             body: JSON.stringify(data)
         })
@@ -80,7 +80,7 @@ const EditCourse = () => {
             headers: {
                 "Content-Type": "application/json",
                 "Accept": "application/json",
-                "Authorization": `Bearer ${token}`
+                "Authorization": `Bearer ${token()}`
             }
         })
             .then(res => res.json())
@@ -93,6 +93,28 @@ const EditCourse = () => {
                     console.log("something went wrong")
                 }
             })
+    }
+    const changeStatus = async (course) => {
+        const status = (course.status == 1) ? 0 : 1;
+
+        await fetch(`${apiUrl}/change-course-status/${course.id}`, {
+            method: 'POST',
+            headers: {
+                'Content-type': 'application/json',
+                'Accept': 'application/json',
+                'Authorization': `Bearer ${token()}`
+            },
+            body: JSON.stringify({ status: status })
+        })
+            .then(res => res.json())
+            .then(result => {
+                if (result.status == 200) {
+                    toast.success(result.message)
+                    setCourse({ ...course, status: result.course.status })
+                } else {
+                    console.log("Something went wrong")
+                }
+            });
     }
 
     useEffect(() => {
@@ -113,6 +135,19 @@ const EditCourse = () => {
                         <div className='col-md-12 mt-5 mb-3'>
                             <div className='d-flex justify-content-between'>
                                 <h2 className='h4 mb-0 pb-0'>Edit Course</h2>
+                                <div>
+                                    {
+                                        course.status == 0 &&
+                                        <Link onClick={() => changeStatus(course)} className='btn btn-secondary'>Publish</Link>
+                                    }
+
+                                    {
+                                        course.status == 1 &&
+                                        <Link onClick={() => changeStatus(course)} className='btn btn-primary'>Unpublish</Link>
+                                    }
+
+                                    <Link to={'/account/my-courses'} className='btn btn-light ms-2'>Back</Link>
+                                </div>
                             </div>
                         </div>
                         <div className='col-lg-3 account-sidebar'>

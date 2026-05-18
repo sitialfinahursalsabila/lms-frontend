@@ -16,7 +16,7 @@ const CreateCourse = () => {
             headers: {
                 "Content-Type": "application/json",
                 "Accept": "application/json",
-                "Authorization": `Bearer ${token}`
+                "Authorization": `Bearer ${token()}`
             },
             body: JSON.stringify(data)
         })
@@ -66,7 +66,7 @@ const CreateCourse = () => {
                                                 />
                                                 {errors.title && <p className="text-danger">Title is required</p>}
                                             </div>
-                                            <button className='btn btn-primary'>Continue</button>
+                                            <Link to="/account/courses" className='btn btn-primary'>Continue</Link>
                                         </div>
                                     </div>
                                 </form>

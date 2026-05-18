@@ -41,7 +41,7 @@ const ManageRequirement = () => {
             headers: {
                 "Content-Type": "application/json",
                 "Accept": "application/json",
-                "Authorization": `Bearer ${token}`
+                "Authorization": `Bearer ${token()}`
             },
             body: JSON.stringify({ requirements: updatedRequirements })
         })
@@ -63,7 +63,7 @@ const ManageRequirement = () => {
             headers: {
                 "Content-Type": "application/json",
                 "Accept": "application/json",
-                "Authorization": `Bearer ${token}`
+                "Authorization": `Bearer ${token()}`
             },
             body: JSON.stringify(formData)
         })
@@ -87,7 +87,7 @@ const ManageRequirement = () => {
             headers: {
                 "Content-Type": "application/json",
                 "Accept": "application/json",
-                "Authorization": `Bearer ${token}`
+                "Authorization": `Bearer ${token()}`
             },
         })
             .then(res => res.json())
@@ -108,7 +108,7 @@ const ManageRequirement = () => {
                 headers: {
                     "Content-Type": "application/json",
                     "Accept": "application/json",
-                    "Authorization": `Bearer ${token}`
+                    "Authorization": `Bearer ${token()}`
                 }
             })
                 .then(res => res.json())

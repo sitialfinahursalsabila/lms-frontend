@@ -17,7 +17,7 @@ const UpdateOutcome = ({ outcomesData, showOutcome, handleClose, outcomes, setOu
             headers: {
                 "Content-Type": "application/json",
                 "Accept": "application/json",
-                "Authorization": `Bearer ${token}`
+                "Authorization": `Bearer ${token()}`
             },
             body: JSON.stringify(data)
         })

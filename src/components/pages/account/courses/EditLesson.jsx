@@ -32,7 +32,7 @@ const EditLesson = ({ placeholder }) => {
             headers: {
                 'Content-type': 'application/json',
                 'Accept': 'application/json',
-                'Authorization': `Bearer ${token}`
+                'Authorization': `Bearer ${token()}`
             },
             body: JSON.stringify({
                 chapter: data.chapter,
@@ -70,7 +70,7 @@ const EditLesson = ({ placeholder }) => {
                     headers: {
                         "Content-Type": "application/json",
                         "Accept": "application/json",
-                        "Authorization": `Bearer ${token}`
+                        "Authorization": `Bearer ${token()}`
                     }
                 });
                 const result = await res.json();
@@ -87,7 +87,7 @@ const EditLesson = ({ placeholder }) => {
             headers: {
                 'Content-type': 'application/json',
                 'Accept': 'application/json',
-                'Authorization': `Bearer ${token}`
+                'Authorization': `Bearer ${token()}`
             }
         })
             .then(res => res.json())
