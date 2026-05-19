@@ -1,4 +1,5 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
+import { useForm } from 'react-hook-form'
 import Layout from '../../../common/Layout'
 import { Link } from 'react-router-dom'
 import UserSidebar from '../../../common/UserSidebar'
@@ -41,7 +42,7 @@ const Profile = () => {
             headers: {
                 'Content-type': 'application/json',
                 'Accept': 'application/json',
-                'Authorization': `Bearer ${token}`
+                'Authorization': `Bearer ${token()}`
             },
             body: JSON.stringify(data)
         })
