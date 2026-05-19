@@ -15,7 +15,7 @@ import CreateCourse from './components/pages/account/courses/CreateCourse'
 import EditCourse from './components/pages/account/courses/EditCourse'
 import EditLesson from './components/pages/account/courses/EditLesson'
 import LeaveRating from './components/pages/account/courses/LeaveRating'
-import Profile from "./components/pages/account/courses/Profile";
+import Profile from "./components/pages/account/Profile";
 
 const App = () => {
   return (

@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
-import Layout from '../../../common/Layout'
+import Layout from '../../common/Layout'
 import { Link } from 'react-router-dom'
-import UserSidebar from '../../../common/UserSidebar'
+import UserSidebar from '../../common/UserSidebar'
 import toast from 'react-hot-toast'
 import { BiSolidCommentError } from 'react-icons/bi'
 

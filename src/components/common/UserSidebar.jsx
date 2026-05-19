@@ -12,7 +12,7 @@ const UserSidebar = () => {
     return (
         <div className='card border-0 shadow-lg'>
             <div className='card-body p-4'>
-                <ul className="list-unstyled mb-0"> {/* Ditambahkan list-unstyled biar bullet points hilang bawaan Bootstrap */}
+                <ul className="list-unstyled mb-0">
                     <li className='d-flex align-items-center mb-3'>
                         <Link to="/account/dashboard" className="text-decoration-none text-dark">
                             <FaChartBar size={16} className='me-2' /> Dashboard
