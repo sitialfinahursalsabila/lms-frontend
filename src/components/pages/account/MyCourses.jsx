@@ -1,9 +1,9 @@
 import Layout from "../../common/Layout";
 import UserSidebar from "../../common/UserSidebar";
 import { Link } from 'react-router-dom';
-import EditCourse from '../../common/EditCourse';
 import React, { useState, useEffect } from 'react';
 import { apiUrl, token } from '../../common/Config';
+import EditCourse from "./courses/EditCourse";
 
 const MyCourses = () => {
     const [courses, setCourses] = useState([]);
@@ -36,7 +36,7 @@ const MyCourses = () => {
                 headers: {
                     'Content-type': 'application/json',
                     'Accept': 'application/json',
-                    'Authorization': `Bearer ${token}`
+                    'Authorization': `Bearer ${token()}`
                 }
             })
                 .then(res => res.json())

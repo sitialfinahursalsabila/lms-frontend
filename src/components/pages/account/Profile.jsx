@@ -2,8 +2,10 @@ import React, { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import Layout from '../../common/Layout'
 import { Link } from 'react-router-dom'
+import { apiUrl, token } from '../../common/Config';
 import UserSidebar from '../../common/UserSidebar'
 import toast from 'react-hot-toast'
+import Loading from '../../common/Loading'
 import { BiSolidCommentError } from 'react-icons/bi'
 
 const Profile = () => {
