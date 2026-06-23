@@ -66,7 +66,7 @@ const CreateCourse = () => {
                                                 />
                                                 {errors.title && <p className="text-danger">Title is required</p>}
                                             </div>
-                                            <Link to="/account/courses" className='btn btn-primary'>Continue</Link>
+                                             <button type="submit" className="btn btn-primary">Continue</button>
                                         </div>
                                     </div>
                                 </form>
